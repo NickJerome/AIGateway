@@ -1,0 +1,274 @@
+{
+  "anthropic.messages": [
+    {
+      "type": "message_start",
+      "message": {
+        "id": "r",
+        "model": "m"
+      }
+    },
+    {
+      "type": "content_block_start",
+      "index": 0,
+      "content_block": {
+        "type": "tool_use",
+        "id": "a",
+        "name": "alpha",
+        "input": {}
+      }
+    },
+    {
+      "type": "content_block_start",
+      "index": 1,
+      "content_block": {
+        "type": "tool_use",
+        "id": "b",
+        "name": "beta",
+        "input": {}
+      }
+    },
+    {
+      "type": "content_block_delta",
+      "index": 0,
+      "delta": {
+        "type": "input_json_delta",
+        "partial_json": "{\"city\":"
+      }
+    },
+    {
+      "type": "content_block_delta",
+      "index": 1,
+      "delta": {
+        "type": "input_json_delta",
+        "partial_json": "{\"city\":"
+      }
+    },
+    {
+      "type": "content_block_delta",
+      "index": 0,
+      "delta": {
+        "type": "input_json_delta",
+        "partial_json": "\"Paris\"}"
+      }
+    },
+    {
+      "type": "content_block_delta",
+      "index": 1,
+      "delta": {
+        "type": "input_json_delta",
+        "partial_json": "\"Paris\"}"
+      }
+    },
+    {
+      "type": "content_block_stop",
+      "index": 0
+    },
+    {
+      "type": "content_block_stop",
+      "index": 1
+    },
+    {
+      "type": "message_delta",
+      "delta": {
+        "stop_reason": "tool_use"
+      }
+    },
+    {
+      "type": "message_stop"
+    }
+  ],
+  "openai.responses": [
+    {
+      "type": "response.created",
+      "response": {
+        "id": "r",
+        "model": "m"
+      }
+    },
+    {
+      "type": "response.output_item.added",
+      "output_index": 0,
+      "item": {
+        "type": "function_call",
+        "call_id": "a",
+        "name": "alpha",
+        "arguments": ""
+      }
+    },
+    {
+      "type": "response.output_item.added",
+      "output_index": 1,
+      "item": {
+        "type": "function_call",
+        "call_id": "b",
+        "name": "beta",
+        "arguments": ""
+      }
+    },
+    {
+      "type": "response.function_call_arguments.delta",
+      "output_index": 0,
+      "delta": "{\"city\":"
+    },
+    {
+      "type": "response.function_call_arguments.delta",
+      "output_index": 1,
+      "delta": "{\"city\":"
+    },
+    {
+      "type": "response.function_call_arguments.delta",
+      "output_index": 0,
+      "delta": "\"Paris\"}"
+    },
+    {
+      "type": "response.function_call_arguments.delta",
+      "output_index": 1,
+      "delta": "\"Paris\"}"
+    },
+    {
+      "type": "response.output_item.done",
+      "output_index": 0,
+      "item": {
+        "type": "function_call"
+      }
+    },
+    {
+      "type": "response.output_item.done",
+      "output_index": 1,
+      "item": {
+        "type": "function_call"
+      }
+    },
+    {
+      "type": "response.completed",
+      "response": {
+        "output": [
+          {
+            "type": "function_call"
+          }
+        ]
+      }
+    }
+  ],
+  "openai.chat": [
+    {
+      "id": "r",
+      "choices": [
+        {
+          "index": 0,
+          "delta": {
+            "tool_calls": [
+              {
+                "index": 0,
+                "id": "a",
+                "type": "function",
+                "function": {
+                  "name": "alpha",
+                  "arguments": ""
+                }
+              },
+              {
+                "index": 1,
+                "id": "b",
+                "type": "function",
+                "function": {
+                  "name": "beta",
+                  "arguments": ""
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "choices": [
+        {
+          "index": 0,
+          "delta": {
+            "tool_calls": [
+              {
+                "index": 0,
+                "function": {
+                  "arguments": "{\"city\":"
+                }
+              },
+              {
+                "index": 1,
+                "function": {
+                  "arguments": "{\"city\":"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "choices": [
+        {
+          "index": 0,
+          "delta": {
+            "tool_calls": [
+              {
+                "index": 0,
+                "function": {
+                  "arguments": "\"Paris\"}"
+                }
+              },
+              {
+                "index": 1,
+                "function": {
+                  "arguments": "\"Paris\"}"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "choices": [
+        {
+          "index": 0,
+          "delta": {},
+          "finish_reason": "tool_calls"
+        }
+      ]
+    },
+    "[DONE]"
+  ],
+  "gemini.generate": [
+    {
+      "responseId": "r",
+      "candidates": [
+        {
+          "content": {
+            "role": "model",
+            "parts": [
+              {
+                "functionCall": {
+                  "id": "a",
+                  "name": "alpha",
+                  "args": {
+                    "city": "Paris"
+                  }
+                }
+              },
+              {
+                "functionCall": {
+                  "id": "b",
+                  "name": "beta",
+                  "args": {
+                    "city": "Paris"
+                  }
+                }
+              }
+            ]
+          },
+          "finishReason": "STOP"
+        }
+      ]
+    }
+  ]
+}

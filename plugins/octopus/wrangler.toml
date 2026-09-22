@@ -1,0 +1,16 @@
+name = "octopus"
+main = "index.mjs"
+routes = [
+  { pattern = "/octopus/v1/chat/completions", auth = "key" },
+  { pattern = "/octopus/v1/responses", auth = "key" },
+  { pattern = "/octopus/v1/messages", auth = "key" },
+  { pattern = "/octopus/v1/models", auth = "key" }
+]
+
+[vars]
+UPSTREAM = "https://octopus.wangjerome.com"
+MODEL = "qwen3.8-flash-next"
+
+[[unsafe.bindings]]
+name = "USAGE"
+type = "usage"

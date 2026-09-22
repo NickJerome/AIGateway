@@ -1,0 +1,18 @@
+name: gateway
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - name: Format, lint, tests and release build
+        run: gateway/scripts/verify.sh
+      - name: Release process and business regression
+        run: timeout 600 cargo test --manifest-path gateway/Cargo.toml --release --locked --test process --test codex_e2e --test realtime_e2e

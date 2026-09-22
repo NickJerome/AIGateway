@@ -1,0 +1,18 @@
+gist/
+**/target/
+bench/data/
+bench/out/
+bench/src/
+bench/request_context/bench_*
+bench/bench_*_ng
+bench/bench_*_bellard
+bench/bench_storage
+bench/bench_zstd*
+bench/check_stream
+bench/env_inject
+
+# Local release bundles are reproducible via gateway/scripts/package_release.py.
+/dist/
+
+# Local running gateway data, logs and credentials.
+/.runtime/

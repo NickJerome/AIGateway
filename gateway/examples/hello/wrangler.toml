@@ -1,0 +1,11 @@
+name = "hello"
+main = "dist/index.mjs"
+compatibility_date = "2026-09-01"
+routes = ["/hello/*"]
+
+[vars]
+GREETING = "Hello"
+
+[[kv_namespaces]]
+binding = "CONFIG"
+id = "hello-config"

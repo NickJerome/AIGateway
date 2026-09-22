@@ -1,0 +1,8 @@
+name = "identity-demo"
+main = "index.js"
+routes = [
+  { pattern = "/identity/call", auth = "key" },
+  { pattern = "/identity/account", auth = "user" },
+  { pattern = "/identity/admin", auth = "admin" },
+  { pattern = "/identity/health", auth = "public" }
+]

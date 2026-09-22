@@ -1,0 +1,15 @@
+{
+  "name": "gateway-codex-pool",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/index.js --bundle --format=esm --platform=neutral --external:cloudflare:workers --outfile=dist/index.mjs",
+    "package": "npm run build && python3 package.py"
+  },
+  "dependencies": {
+    "hono": "4.13.8"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12"
+  }
+}

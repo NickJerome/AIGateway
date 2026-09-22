@@ -1,0 +1,24 @@
+name = "codex"
+main = "dist/index.mjs"
+routes = ["/codex/*", "/v1/responses", "/v1/responses/compact", "/v1/models"]
+compatibility_date = "2026-09-20"
+[vars]
+UPSTREAM = "https://chatgpt.com/backend-api/codex"
+AUTH_BASE = "https://auth.openai.com"
+[[kv_namespaces]]
+binding = "CONFIG"
+id = "codex-config"
+[[durable_objects.bindings]]
+name = "CREDS"
+class_name = "Credential"
+[[durable_objects.bindings]]
+name = "POOL"
+class_name = "Pool"
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["Credential", "Pool"]
+[[unsafe.bindings]]
+name = "USAGE"
+type = "usage"
+[triggers]
+crons = ["*/5 * * * *"]
